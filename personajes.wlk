@@ -3,20 +3,22 @@ object estudioDeLaBebida {
   var voluntario = tito
   var rendimientoDelVoluntario = 20
   var bebidaDelVoluntario = whisky.bebidaActual()
-  var velocidadDelVoluntario = voluntario.velocidadBase()
+  var velocidadDelVoluntario = self.calcularVelocidadDelVoluntario()
   var cantidadConsumida = 0
+
   method cantidadConsumida() = cantidadConsumida 
   method bebidaDelVoluntario() = bebidaDelVoluntario 
   method voluntario() = voluntario
   method rendimientoDelVoluntario() = rendimientoDelVoluntario
 
   method calcularVelocidadDelVoluntario() {
-    velocidadDelVoluntario = rendimientoDelVoluntario * voluntario.velocidadBase() / voluntario.peso()
+    velocidadDelVoluntario = rendimientoDelVoluntario * voluntario.inerciaBase() / voluntario.peso() 
   }
 
+  //
   method rendimientoSegunLaBebida(unDeportista, bebida) {
     if (bebida.bebidaActual() == bebidaDelVoluntario){
-        rendimientoDelVoluntario = rendimientoDelVoluntario + bebida.efectoDelRendimiento(unDeportista)
+        rendimientoDelVoluntario = voluntario.peso() + bebida.efectoDelRendimiento(unDeportista)
     }
   }
 
@@ -31,9 +33,9 @@ object estudioDeLaBebida {
 
 object tito {
   var peso = 70
-  var velocidadBase = 10
+  var inerciaBase = 490
   method peso() = peso 
-  method velocidadBase() = velocidadBase 
+  method inerciaBase() = inerciaBase
   method nombre() = "Tito"
   
 }
